@@ -12,7 +12,7 @@ steps:
       - 'deploy'
       - 'hello-world'
       - '--image'
-      - '${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/hello-world:${SHORT_SHA}'
+      - 'us-east1-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/hello-world:${SHORT_SHA}'
       - '--region'
       - '${LOCATION}'
       - '--platform'
