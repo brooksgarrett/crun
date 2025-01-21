@@ -20,7 +20,7 @@ steps:
       - '--allow-unauthenticated'
 
 images:
-  - '${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/hello-world:${SHORT_SHA}'
+  - 'us-east1-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/hello-world:${SHORT_SHA}'
 
 substitutions:
   _REPOSITORY: cloud-run-source-deploy # Default repository name
