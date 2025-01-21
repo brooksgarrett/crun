@@ -1,9 +1,9 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/hello-world', '.']
+    args: ['build', '-t', '${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/hello-world:${SHORT_SHA}', '.']
   
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/hello-world']
+    args: ['push', '${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/hello-world:${SHORT_SHA}']
     
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
@@ -12,14 +12,18 @@ steps:
       - 'deploy'
       - 'hello-world'
       - '--image'
-      - 'gcr.io/$PROJECT_ID/hello-world'
+      - '${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/hello-world:${SHORT_SHA}'
       - '--region'
-      - 'us-central1'
+      - '${LOCATION}'
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
 
 images:
-  - 'gcr.io/$PROJECT_ID/hello-world' 
+  - '${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/hello-world:${SHORT_SHA}'
+
+substitutions:
+  _REPOSITORY: cloud-run-source-deploy # Default repository name
+
 options:
   logging: CLOUD_LOGGING_ONLY
