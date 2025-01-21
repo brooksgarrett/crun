@@ -1,9 +1,9 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', '${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/hello-world:${SHORT_SHA}', '.']
+    args: ['build', '-t', 'us-east1-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/hello-world:${SHORT_SHA}', '.']
   
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', '${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/hello-world:${SHORT_SHA}']
+    args: ['push', 'us-east1-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/hello-world:${SHORT_SHA}']
     
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
